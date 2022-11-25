@@ -29,9 +29,13 @@
                                     </button>
                                 </div>
                                 <div class="input-group mb-1">
-                                    <b class="mt-3">IMPORT QUESTION : </b>
+                                    {{-- <b class="mt-3">IMPORT QUESTION : </b>
                                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button>
+                                    <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button> --}}
+                                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
                                 </div>
                             </div>
                         </div>
