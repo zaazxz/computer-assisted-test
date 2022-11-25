@@ -1,117 +1,123 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>Questions</h1>
-        </div>
+    <div class="main-content">
+        <section class="section">
+            <div class="section-header">
+                <h1>Questions</h1>
+            </div>
 
-        <div class="section-body">
+            <div class="section-body">
 
-            <div class="card">
-                <div class="card-header">
-                    <h4><i class="fas fa-question"></i> Questions</h4>
-                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-question"></i> Questions</h4>
+                    </div>
 
-                <div class="card-body">
-                    <form action="{{ route('questions.index') }}" method="GET">
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                @can('questions.create')
-                                    <div class="input-group-prepend mb-4">
-                                        <a href="{{ route('questions.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
+                    <div class="card-body">
+                        <form action="{{ route('questions.index') }}" method="GET">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    @can('questions.create')
+                                        <div class="input-group-prepend mb-4">
+                                            <a href="{{ route('questions.create') }}" class="btn btn-primary"
+                                                style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
+                                        </div>
+                                    @endcan
+                                    <input type="text" class="form-control" name="q" placeholder="Cari questions">
+                                    <div class="input-group-append mb-4">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
+                                        </button>
                                     </div>
-                                @endcan
-                                <input type="text" class="form-control" name="q" placeholder="Cari questions">
-                                <div class="input-group-append mb-4">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
-                                    </button>
-                                </div>
-                                <div class="input-group mb-1">
-                                    {{-- <b class="mt-3">IMPORT QUESTION : </b>
+                                    <div class="input-group mb-1 d-grid gap-2">
+                                        {{-- <b class="mt-3">IMPORT QUESTION : </b>
                                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                     <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button> --}}
-                                    <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sharp fa-solid fa-file-import"></i>
-                                IMPORT QUESTION
-                                </button>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary form-control" data-toggle="modal"
+                                            data-target="#exampleModal" style="padding-top: 10px"><i
+                                                class="fas fa-sharp fa-solid fa-file-import"></i>
+                                            IMPORT QUESTION
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                <th scope="col">SUBJECT</th>
-                                <th scope="col">QUESTION</th>
-                                <th scope="col">ATTACHMENT</th>
-                                <th scope="col">OPTION A</th>
-                                <th scope="col">OPTION B</th>
-                                <th scope="col">OPTION C</th>
-                                <th scope="col">OPTION D</th>
-                                <th scope="col">OPTION E</th>
-                                <th scope="col">ANSWER</th>
-                                <th scope="col">EXPLANATION</th>
-                                <th scope="col">CREATED BY</th>
-                                <th scope="col" style="width: 15%;text-align: center">AKSI</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($questions as $no => $question)
-                                <tr>
-                                    <th scope="row" style="text-align: center">{{ ++$no + ($questions->currentPage()-1) * $questions->perPage() }}</th>
-                                    <td>{{ $subject->getName($question->subject_id) }}</td>
-                                    <td>{{ $question->detail }}</td>
-                                    <td>
-                                        @if ($question->image_id)
-                                            <a href=" {{ Storage::url('public/images/'.$image->getLink($question->image_id)) }}">IMAGE</a>
-                                        @else
-                                            NO
-                                        @endif
-                                    </td>
-                                    <td>{{ $question->option_A }}</td>
-                                    <td>{{ $question->option_B }}</td>
-                                    <td>{{ $question->option_C }}</td>
-                                    <td>{{ $question->option_D }}</td>
-                                    <td>{{ $question->option_E }}</td>
-                                    <td>{{ $question->answer }}</td>
-                                    <td>{{ $question->explanation }}</td>
-                                    <td>{{ $user->getName($question->created_by) }}</td>
-                                    <td class="text-center">
-                                        @can('questions.edit')
-                                            <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-sm btn-primary">
-                                                <i class="fa fa-pencil-alt"></i>
-                                            </a>
-                                        @endcan
-                                        
-                                        @can('questions.delete')
-                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $question->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        @endcan
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div style="text-align: center">
-                            {{$questions->links("vendor.pagination.bootstrap-4")}}
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="text-align: center;width: 6%">NO.</th>
+                                        <th scope="col">SUBJECT</th>
+                                        <th scope="col">QUESTION</th>
+                                        <th scope="col">ATTACHMENT</th>
+                                        <th scope="col">OPTION A</th>
+                                        <th scope="col">OPTION B</th>
+                                        <th scope="col">OPTION C</th>
+                                        <th scope="col">OPTION D</th>
+                                        <th scope="col">OPTION E</th>
+                                        <th scope="col">ANSWER</th>
+                                        <th scope="col">EXPLANATION</th>
+                                        <th scope="col">CREATED BY</th>
+                                        <th scope="col" style="width: 15%;text-align: center">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($questions as $no => $question)
+                                        <tr>
+                                            <th scope="row" style="text-align: center">
+                                                {{ ++$no + ($questions->currentPage() - 1) * $questions->perPage() }}</th>
+                                            <td>{{ $subject->getName($question->subject_id) }}</td>
+                                            <td>{{ $question->detail }}</td>
+                                            <td>
+                                                @if ($question->image_id)
+                                                    <a
+                                                        href=" {{ Storage::url('public/images/' . $image->getLink($question->image_id)) }}">IMAGE</a>
+                                                @else
+                                                    NO
+                                                @endif
+                                            </td>
+                                            <td>{{ $question->option_A }}</td>
+                                            <td>{{ $question->option_B }}</td>
+                                            <td>{{ $question->option_C }}</td>
+                                            <td>{{ $question->option_D }}</td>
+                                            <td>{{ $question->option_E }}</td>
+                                            <td>{{ $question->answer }}</td>
+                                            <td>{{ $question->explanation }}</td>
+                                            <td>{{ $user->getName($question->created_by) }}</td>
+                                            <td class="text-center">
+                                                @can('questions.edit')
+                                                    <a href="{{ route('questions.edit', $question->id) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                @endcan
+
+                                                @can('questions.delete')
+                                                    <button onClick="Delete(this.id)" class="btn btn-sm btn-danger"
+                                                        id="{{ $question->id }}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div style="text-align: center">
+                                {{ $questions->links('vendor.pagination.bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
-</div>
+        </section>
+    </div>
 
-<script>
-    //ajax delete
-    function Delete(id)
-        {
+    <script>
+        //ajax delete
+        function Delete(id) {
             var id = id;
             var token = $("meta[name='csrf-token']").attr("content");
 
@@ -129,13 +135,13 @@
 
                     //ajax delete
                     jQuery.ajax({
-                        url: "{{ route("questions.index") }}/"+id,
-                        data:   {
+                        url: "{{ route('questions.index') }}/" + id,
+                        data: {
                             "id": id,
                             "_token": token
                         },
                         type: 'DELETE',
-                        success: function (response) {
+                        success: function(response) {
                             if (response.status == "success") {
                                 swal({
                                     title: 'BERHASIL!',
@@ -148,7 +154,7 @@
                                 }).then(function() {
                                     location.reload();
                                 });
-                            }else{
+                            } else {
                                 swal({
                                     title: 'GAGAL!',
                                     text: 'DATA GAGAL DIHAPUS!',
@@ -169,5 +175,5 @@
                 }
             })
         }
-</script>
+    </script>
 @stop
