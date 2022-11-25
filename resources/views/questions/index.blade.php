@@ -19,14 +19,19 @@
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 @can('questions.create')
-                                    <div class="input-group-prepend">
+                                    <div class="input-group-prepend mb-4">
                                         <a href="{{ route('questions.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
                                     </div>
                                 @endcan
                                 <input type="text" class="form-control" name="q" placeholder="Cari questions">
-                                <div class="input-group-append">
+                                <div class="input-group-append mb-4">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
                                     </button>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <b class="mt-3">IMPORT QUESTION : </b>
+                                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                    <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button>
                                 </div>
                             </div>
                         </div>

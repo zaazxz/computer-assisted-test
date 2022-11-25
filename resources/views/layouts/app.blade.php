@@ -63,8 +63,9 @@
                         <a href="{{ route('dashboard.index') }}">COMPUTER ASSSISTED TEST</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="{{ route('dashboard.index') }}"><img src="{{ asset('assets/img/brimob2.png') }}" style="width: 50px" alt=""></a>
+                        <a href="{{ route('dashboard.index') }}"><img src="{{ asset('assets/img/brimob2.png') }}" style="width: 40px" alt=""></a>
                     </div>
+                    @hasrole('admin')
                     <ul class="sidebar-menu">
                         @if(auth()->user()->can('roles.index') || auth()->user()->can('permission.index') || auth()->user()->can('users.index'))
                         <li class="menu-header">PENGATURAN</li>
@@ -141,9 +142,9 @@
                                 <span>Image</span></a></li>
                         @endcan
                     </ul>
+                    @endhasrole
                 </aside>
             </div>
-
             <!-- Main Content -->
             @yield('content')
 
