@@ -136,12 +136,6 @@
                             @enderror
                         </div>
 
-                        <div class="input-group mb-5">
-                            <b class="mt-2">IMPORT QUESTION : </b>
-                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                            <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button>
-                        </div>
-
                         <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i>
                             SIMPAN</button>
                         <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>

@@ -53,7 +53,7 @@
                                 @enderror
                             </div>
 
-                            <div class="input-group mb-5">
+                            <div class="input-group mb-4">
                                 <b class="mt-2">IMPORT IMAGE : </b>
                                 <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                 <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button>
