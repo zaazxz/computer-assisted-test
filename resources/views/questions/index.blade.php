@@ -33,9 +33,9 @@
                                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                     <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button> --}}
                                     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sharp fa-solid fa-file-import"></i>
+                                IMPORT QUESTION
+                                </button>
                                 </div>
                             </div>
                         </div>
