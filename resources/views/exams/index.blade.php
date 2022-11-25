@@ -16,7 +16,7 @@
 
                 <div class="card-body">
                     <form action="{{ route('exams.index') }}" method="GET">
-                        @hasanyrole('teacher|admin')
+                        @hasanyrole('admin')
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 @can('exams.create')
@@ -33,7 +33,7 @@
                         </div>
                         @endhasanyrole
                     </form>
-                    <div class="table-responsive">
+                    <div class="table-responsive mb-5">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -99,6 +99,54 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4><i class="fas fa-book-open"></i> Result Test</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center;width: 6%">NO.</th>
+                                <th scope="col">NAME</th>
+                                <th scope="col">TIME</th>
+                                <th scope="col">TOTAL QUESTION</th>
+                                <th scope="col">SCORE</th>
+                                <th scope="col">START</th>
+                                <th scope="col">END</th>
+                                <th scope="col" style="width: 15%;text-align: center">AKSI</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($exams as $no => $exam)
+                                <tr>
+                                    <th scope="row" style="text-align: center">{{ ++$no + ($exams->currentPage()-1) * $exams->perPage() }}</th>
+                                    <td>Nama User</td>
+                                    <td>{{ $exam->time }}</td>
+                                    <td>{{ $exam->questions->count() }}</td>
+                                    <td></td>
+                                    <td>{{ TanggalID($exam->start) }}</td>
+                                    <td>{{ TanggalID($exam->end) }}</td>
+                                    <td class="text-center">
+                                        @can('exams.delete')
+                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $exam->id }}">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        @endcan
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div style="text-align: center">
+                            {{$exams->links("vendor.pagination.bootstrap-4")}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </section>
