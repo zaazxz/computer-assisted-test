@@ -102,7 +102,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-book-open"></i> Result Test</h4>
+                    <h4><i class="fas fa-poll-h"></i> Result Test</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

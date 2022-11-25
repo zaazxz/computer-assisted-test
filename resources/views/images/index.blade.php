@@ -53,15 +53,17 @@
                                 @enderror
                             </div>
 
-                            <div class="input-group mb-4">
-                                <b class="mt-2">IMPORT IMAGE : </b>
+                                {{-- <b class="mt-2">IMPORT IMAGE : </b>
                                 <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button>
-                            </div>
+                                <button class="btn btn-primary btn-submit" type="button" id="inputGroupFileAddon04">UPLOAD</button> --}}
+                                
+                            
 
                             <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-upload"></i> UPLOAD</button>
-                            <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>
-
+                            <button class="btn btn-warning btn-reset mr-1" type="reset"><i class="fa fa-redo"></i> RESET</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sharp fa-solid fa-file-import"></i>
+                                IMPORT IMAGE
+                                </button>
 
                         </form>
 
