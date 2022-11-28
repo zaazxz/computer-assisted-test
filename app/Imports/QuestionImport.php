@@ -26,18 +26,5 @@ class QuestionImport implements ToModel
             'explanation' => $row[9]
         ]);
 
-        //     $table->foreignId('subject_id');
-        //     $table->text('detail');
-        //     $table->string('image_id')->nullable();
-        //     $table->string('option_A')->nullable();
-        //     $table->string('option_B')->nullable();
-        //     $table->string('option_C')->nullable();
-        //     $table->string('option_D')->nullable();
-        //     $table->string('option_E')->nullable();
-        //     $table->text('answer');
-        //     $table->text('explanation')->nullable();
-        //     $table->string('created_by');
-        //     $table->timestamps();
-
     }
 }

@@ -166,9 +166,9 @@
                         <form action="/importexcel" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="file" name="file">
-                                    <label class="custom-file-label" for="file">Import Questions</label>
+                                <div class="">
+                                    <input type="file" class="" id="file" name="file">
+                                    <label class="" for="file">Import Questions</label>
                                 </div>
                             </div>
                             <div class="modal-footer">

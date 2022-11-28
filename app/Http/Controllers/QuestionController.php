@@ -176,7 +176,7 @@ class QuestionController extends Controller
         $namaFile = $data->getClientOriginalName();
         $data->move('QuestionData', $namaFile);
 
-        Excel::import(new QuestionImport, public_path('/QuestionData/' . $namaFile));
+        Excel::import(new QuestionImport, public_path('QuestionData/' . $namaFile));
         return redirect()->back();
 
     }
