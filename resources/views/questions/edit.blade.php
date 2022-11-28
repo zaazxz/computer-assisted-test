@@ -18,26 +18,7 @@
                     <form action="{{ route('questions.update', $question->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        <div class="form-group">
-                            <label>SUBJECT</label>
-                            <select class="form-control select-subject @error('subject_id') is-invalid @enderror" name="subject_id">
-                                <option value="">- SELECT SUBJECT -</option>
-                                @foreach ($subjects as $subject)
-                                    @if ($question->subject_id == $subject->id )
-                                    <option value="{{ $subject->id }}" selected>{{ $subject->name }}</option>
-                                    @else
-                                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                            @error('subject_id')
-                            <div class="invalid-feedback" style="display: block">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-                       
+                        
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>IMAGE</label>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Image;
-use App\Models\Subject;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Imports\QuestionImport;
@@ -34,11 +33,10 @@ class QuestionController extends Controller
             $questions = $questions->where('detail', 'like', '%'. request()->q . '%');
         })->paginate(10);
 
-        $subject = new Subject();
         $image = new Image();
         $user = new User();
 
-        return view('questions.index', compact('questions', 'subject', 'image', 'user'));
+        return view('questions.index', compact('questions', 'image', 'user'));
     }
 
     /**
@@ -48,7 +46,6 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::latest()->get();
         $images = Image::latest()->get();
         return view('questions.create', compact('images'));
     }
@@ -102,9 +99,8 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        $subjects = Subject::latest()->get();
         $images = Image::latest()->get();
-        return view('questions.edit', compact('question', 'subjects', 'images'));
+        return view('questions.edit', compact('question', 'images'));
     }
 
     /**

@@ -128,11 +128,6 @@
                                 </li>
                             @endcan
 
-                            @can('subjects.index')
-                                <li class="{{ setActive('/subject') }}"><a class="nav-link"
-                                        href="{{ route('subjects.index') }}"><i class="fas fa-atlas"></i>
-                                        <span>Subject</span></a></li>
-                            @endcan
 
                             @can('events.index')
                                 <li class="{{ setActive('admin/event') }}"><a class="nav-link" href="#"><i
@@ -163,7 +158,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">IMPORT FILE</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
