@@ -168,13 +168,19 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form action="/importexcel" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="file" name="file">
+                                    <label class="custom-file-label" for="file">Import Questions</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

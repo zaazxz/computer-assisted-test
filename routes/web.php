@@ -59,25 +59,10 @@ Route::group(['middleware' => 'auth'], function(){
         'show', 'create', 'edit', 'update'
     ]);
 
-    //videos
-    Route::resource('videos', VideoController::class)->except([
-        'show', 'create', 'edit', 'update'
-    ]);
-
-    //audios
-    Route::resource('audios', AudioController::class)->except([
-        'show', 'create', 'edit', 'update'
-    ]);
-
-    //documents
-    Route::resource('documents', DocumentController::class)->except([
-        'show', 'create', 'edit', 'update'
-    ]);
-
-    //subjects
-    Route::resource('subjects', SubjectController::class)->except([
-        'show', 'create', 'edit', 'update'
-    ]);
+    // //subjects
+    // Route::resource('subjects', SubjectController::class)->except([
+    //     'show', 'create', 'edit', 'update'
+    // ]);
 
     //questions
     Route::resource('questions', QuestionController::class)->except([
@@ -92,4 +77,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('exams/student/{id}', [ExamController::class, 'student'])->name('exams.student');
     Route::put('exams/assign/{id}', [ExamController::class, 'assign'])->name('exams.assign');
     Route::get('/exams/review/{user_id}/{exam_id}', [ExamController::class, 'review'])->name('exams.review');
+
+    // Import Questions
+    Route::post('/importexcel', [QuestionController::class, 'importexcel'])->name('importexcel');
+
 });

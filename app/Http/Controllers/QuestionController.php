@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Image;
 use App\Models\Subject;
 use App\Models\Question;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Imports\QuestionImport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuestionController extends Controller
 {
@@ -47,7 +50,7 @@ class QuestionController extends Controller
     {
         $subjects = Subject::latest()->get();
         $images = Image::latest()->get();
-        return view('questions.create', compact('subjects', 'images', ));
+        return view('questions.create', compact('images'));
     }
 
     /**
@@ -59,7 +62,6 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'subject_id'  => 'required',
             'detail'      => 'required',
             'option_A'    => 'required',
             'option_B'    => 'required',
@@ -70,17 +72,13 @@ class QuestionController extends Controller
         ]);
 
         $question = Question::create([
-            'subject_id'    => $request->input('subject_id'),
             'detail'        => $request->input('detail'),
             'option_A'      => $request->input('option_A'),
             'option_B'      => $request->input('option_B'),
             'option_C'      => $request->input('option_C'),
             'option_D'      => $request->input('option_D'),
             'option_E'      => $request->input('option_E'),
-            'video_id'      => $request->input('video_id'),
-            'audio_id'      => $request->input('audio_id'),
             'image_id'      => $request->input('image_id'),
-            'document_id'   => $request->input('document_id'),
             'answer'        => $request->input('answer'),
             'explanation'   => $request->input('explanation'),
             'created_by'    => Auth()->id()
@@ -119,7 +117,6 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         $this->validate($request, [
-            'subject_id'  => 'required',
             'detail'      => 'required',
             'option_A'    => 'required',
             'option_B'    => 'required',
@@ -132,17 +129,13 @@ class QuestionController extends Controller
         $question = Question::findOrFail($question->id);
 
         $question->update([
-            'subject_id'    => $request->input('subject_id'),
             'detail'        => $request->input('detail'),
             'option_A'      => $request->input('option_A'),
             'option_B'      => $request->input('option_B'),
             'option_C'      => $request->input('option_C'),
             'option_D'      => $request->input('option_D'),
             'option_E'      => $request->input('option_E'),
-            'video_id'      => $request->input('video_id'),
-            'audio_id'      => $request->input('audio_id'),
             'image_id'      => $request->input('image_id'),
-            'document_id'   => $request->input('document_id'),
             'answer'        => $request->input('answer'),
             'explanation'   => $request->input('explanation'),
             'created_by'    => Auth()->id()
@@ -179,4 +172,17 @@ class QuestionController extends Controller
             ]);
         }
     }
+
+    // Import Excel
+    public function importexcel(Request $request) {
+        $data = $request->file('file');
+
+        $namaFile = $data->getClientOriginalName();
+        $data->move('QuestionData', $namaFile);
+
+        Excel::import(new QuestionImport, public_path('/QuestionData/' . $namaFile));
+        return redirect()->back();
+
+    }
+
 }
