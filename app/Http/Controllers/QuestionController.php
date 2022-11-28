@@ -176,8 +176,16 @@ class QuestionController extends Controller
         $namaFile = $data->getClientOriginalName();
         $data->move('QuestionData', $namaFile);
 
-        Excel::import(new QuestionImport, public_path('QuestionData/' . $namaFile));
-        return redirect()->back();
+        $import = Excel::import(new QuestionImport, public_path('QuestionData/' . $namaFile));
+
+        if ($import) {
+            //redirect dengan pesan sukses
+            return redirect()->back()->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->back()->with(['error' => 'Data Gagal Diimport!']);
+        }
+        
 
     }
 

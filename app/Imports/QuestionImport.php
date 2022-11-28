@@ -24,7 +24,7 @@ class QuestionImport implements ToModel
             'option_E' => $row[7], 
             'answer' => $row[8], 
             'explanation' => $row[9],
-            'created_by' => $row[10]
+            'created_by' => Auth()->id()
         ]);
 
     }
