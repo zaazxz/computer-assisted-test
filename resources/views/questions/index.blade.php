@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="main-content">
@@ -48,7 +48,6 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                        <th scope="col">SUBJECT</th>
                                         <th scope="col">QUESTION</th>
                                         <th scope="col">ATTACHMENT</th>
                                         <th scope="col">OPTION A</th>
@@ -67,7 +66,6 @@
                                         <tr>
                                             <th scope="row" style="text-align: center">
                                                 {{ ++$no + ($questions->currentPage() - 1) * $questions->perPage() }}</th>
-                                            <td>{{ $subject->getName($question->subject_id) }}</td>
                                             <td>{{ $question->detail }}</td>
                                             <td>
                                                 @if ($question->image_id)
