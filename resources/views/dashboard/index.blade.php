@@ -5,7 +5,7 @@
     <section class="section">
         @hasanyrole('admin')
         <div class="section-header">
-          <h1>Dishbird</h1>
+          <h1>Dahboard</h1>
         </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
