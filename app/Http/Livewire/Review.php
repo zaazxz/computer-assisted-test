@@ -4,11 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Exam;
 use App\Models\User;
-use App\Models\Audio;
 use App\Models\Image;
-use App\Models\Video;
 use Livewire\Component;
-use App\Models\Document;
 use Livewire\WithPagination;
 
 class Review extends Component
@@ -57,9 +54,6 @@ class Review extends Component
         return view('livewire.review', [
             'exam'      => Exam::findOrFail($this->exam_id),
             'questions' => $this->questions(),
-            'video'     => new Video(),
-            'audio'     => new Audio(),
-            'document'  => new Document(),
             'image'     => new Image()
         ]);
     }
