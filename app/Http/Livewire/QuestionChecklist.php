@@ -78,11 +78,9 @@ class QuestionChecklist extends Component
                                     })->get();
                                     })->whereNotIn('id', $this->selectedQuestion)
                                 ->paginate(5),
-<<<<<<< HEAD
-                'questionsAll' => Question::latest()->whereIn('id', $this->selectedQuestion)->get()
-=======
+                                
                 'questionsAll' => Question::latest()->whereIn('id', $this->selectedQuestion)->get(),
->>>>>>> aeb45a35ef598340ff0a19a67ae97ff86c0059f7
+
                 ]);
         }
         
