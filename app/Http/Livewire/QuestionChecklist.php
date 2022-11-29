@@ -54,8 +54,7 @@ class QuestionChecklist extends Component
                                         $query->where('name', 'like', '%'. $this->p . '%');
                                     })->get();
                                     })
-                                ->paginate(5),
-                'subject' => new Subject()
+                                ->paginate(5)
                 ]);
         } else {
             return view('livewire.question-checklist', [
@@ -68,8 +67,7 @@ class QuestionChecklist extends Component
                                     })->get();
                                     })->whereNotIn('id', $this->selectedQuestion)
                                 ->paginate(5),
-                'questionsAll' => Question::latest()->whereIn('id', $this->selectedQuestion)->get(),
-                'subject' => new Subject()
+                'questionsAll' => Question::latest()->whereIn('id', $this->selectedQuestion)->get()
                 ]);
         }
         
