@@ -47,7 +47,10 @@
             <table id="table_id" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Choose</th> 
+                        <div class="form-check form-check-inline">
+                            
+                            <th><input class="form-check-input" wire:model="selectAll" type="checkbox"> Choose All</th>
+                        </div> 
                         <th>Detail Question</th>
                     </tr>
                 </thead>
