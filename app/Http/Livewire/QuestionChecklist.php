@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Exam;
-use App\Models\Subject;
 use Livewire\Component;
 use App\Models\Question;
 use Livewire\WithPagination;
@@ -18,6 +17,7 @@ class QuestionChecklist extends Component
     public $p = null;
     public $selectedQuestion = [];
     public $question_list = [];
+    public $selectAll = false;
 
     public function mount($selectedExam = null)
     {
@@ -42,6 +42,17 @@ class QuestionChecklist extends Component
         $this->dispatchBrowserEvent('question-updated', ['selectedQuestion' => $this->selectedQuestion]);
     }
 
+    
+    //selectall
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->selectedQuestion = Question::pluck('id');
+        } else {
+            $this->selectedQuestion = [];
+        } 
+    }
+
     public function render()
     {
         if (empty($this->selectedQuestion)) {
@@ -54,8 +65,7 @@ class QuestionChecklist extends Component
                                         $query->where('name', 'like', '%'. $this->p . '%');
                                     })->get();
                                     })
-                                ->paginate(5),
-                'subject' => new Subject()
+                                ->paginate(5)
                 ]);
         } else {
             return view('livewire.question-checklist', [
@@ -69,11 +79,11 @@ class QuestionChecklist extends Component
                                     })->whereNotIn('id', $this->selectedQuestion)
                                 ->paginate(5),
                 'questionsAll' => Question::latest()->whereIn('id', $this->selectedQuestion)->get(),
-                'subject' => new Subject()
                 ]);
         }
         
         
         // dd($this->questions);
     }
+
 }
