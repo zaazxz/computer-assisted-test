@@ -15,7 +15,9 @@ class ImageImport implements ToModel
     public function model(array $row)
     {
         return new Image([
-            //
+            'title' => $row[1],
+            'caption' => $row[2],
+            'link' => $row[3]
         ]);
     }
 }

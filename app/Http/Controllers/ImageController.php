@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Imports\ImageImport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
@@ -85,6 +88,23 @@ class ImageController extends Controller
             return response()->json([
                 'status' => 'error'
             ]);
+        }
+    }
+
+    public function importimage(Request $request) {
+        $data = $request->file('file');
+
+        $namaFile = $data->getClientOriginalName();
+        $data->move('ImageData', $namaFile);
+
+        $import = Excel::import(new ImageImport, public_path('ImageData/' . $namaFile));
+
+        if ($import) {
+            //redirect dengan pesan sukses
+            return redirect()->back()->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->back()->with(['error' => 'Data Gagal Diimport!']);
         }
     }
 }

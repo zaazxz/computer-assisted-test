@@ -61,9 +61,9 @@
 
                             <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-upload"></i> UPLOAD</button>
                             <button class="btn btn-warning btn-reset mr-1" type="reset"><i class="fa fa-redo"></i> RESET</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sharp fa-solid fa-file-import"></i>
+                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sharp fa-solid fa-file-import"></i>
                                 IMPORT IMAGE
-                            </button>
+                            </button> --}}
 
                         </form>
 

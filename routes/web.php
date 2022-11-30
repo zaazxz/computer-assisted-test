@@ -81,4 +81,7 @@ Route::group(['middleware' => 'auth'], function(){
     // Import Questions
     Route::post('/importexcel', [QuestionController::class, 'importexcel'])->name('importexcel');
 
+    // Import Image
+    Route::post('/importimage', [ImageController::class, 'importimage'])->name('importimage');
+
 });
