@@ -4,11 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AudioController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\VideoController;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
@@ -58,11 +54,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('images', ImageController::class)->except([
         'show', 'create', 'edit', 'update'
     ]);
-
-    // //subjects
-    // Route::resource('subjects', SubjectController::class)->except([
-    //     'show', 'create', 'edit', 'update'
-    // ]);
 
     //questions
     Route::resource('questions', QuestionController::class)->except([
