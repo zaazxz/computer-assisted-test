@@ -169,22 +169,22 @@ class QuestionController extends Controller
         }
     }
 
-    // // Import Excel
-    // public function importexcel(Request $request) {
-    //     $data = $request->file('file');
+    // Import Excel
+    public function importexcel(Request $request) {
+        $data = $request->file('file');
 
-    //     $namaFile = $data->getClientOriginalName();
-    //     $data->move('QuestionData', $namaFile);
+        $namaFile = $data->getClientOriginalName();
+        $data->move('QuestionData', $namaFile);
 
-    //     $import = Excel::import(new QuestionImport, public_path('QuestionData/' . $namaFile));
+        $import = Excel::import(new QuestionImport, public_path('QuestionData/' . $namaFile));
 
-    //     if ($import) {
-    //         //redirect dengan pesan sukses
-    //         return redirect()->back()->with(['success' => 'Data Berhasil Diimport!']);
-    //     } else {
-    //         //redirect dengan pesan error
-    //         return redirect()->back()->with(['error' => 'Data Gagal Diimport!']);
-    //     }
-    // }
+        if ($import) {
+            //redirect dengan pesan sukses
+            return redirect()->back()->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->back()->with(['error' => 'Data Gagal Diimport!']);
+        }
+    }
 
 }

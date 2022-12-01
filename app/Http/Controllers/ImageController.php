@@ -55,7 +55,7 @@ class ImageController extends Controller
 
         $image = Image::create([
             'title'     => $request->input('title'),
-            'link'     => $image->hashName(),
+            'link'      => $image->hashName(),
             'caption'   => $request->input('caption')
         ]);
 
