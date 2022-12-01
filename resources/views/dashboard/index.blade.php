@@ -57,7 +57,8 @@
         @endhasanyrole
         @hasrole('student')
         <div class="section-header">
-          <h1>Anda akan masuk ke-halaman test dalam : </h1>
+          <h1>Anda akan masuk ke-halaman test dalam : 
+          </h1>
         </div>
         <h3>Tata tertib peserta</h3>
         <ul>
