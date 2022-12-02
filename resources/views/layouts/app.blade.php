@@ -22,8 +22,10 @@
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 
+    @hasrole('student')
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/count.js"></script>
+    @endhasrole
 
     @livewireStyles
 </head>

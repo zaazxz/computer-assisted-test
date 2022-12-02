@@ -11,5 +11,5 @@ function counter(time, url){
 }
  
 $(document).ready(function(){
-	counter(10, 'exams/student/{id}');
+	counter(10, 'exams/1');
 });
