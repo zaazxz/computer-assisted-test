@@ -12,15 +12,15 @@
     </div>
     @foreach ($questions as $question)
     <div class="card-body">
-        <b>Soal No. {{ $questions->currentPage() }}</b>
-        <p>{{ $question['detail'] }}</p>
+        <b>Soal No. {{ $questions->currentPage() }}</b><br>
+        <h5>{{ $question['detail'] }}</h5>
             @if ($question['image_id'])
             <img src="{{ Storage::url('public/images/'.$image->getLink($question['image_id'])) }}" style="width: 600px">
             @else
                 
             @endif
         <br><br>
-        <i>Pilih salah satu jawaban dibawah ini:</i> 
+        <i>Pilih salah satu jawaban dibawah ini :</i> 
         <br><br>
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
             <button type="button" class="{{ in_array($question['id'].'-'.$question['option_A'], $selectedAnswers) ? 'btn btn-success border border-secondary rounded' : 'btn btn-light border border-secondary rounded' }}"
