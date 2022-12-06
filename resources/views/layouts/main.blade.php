@@ -135,10 +135,7 @@
                                         <span>Agenda</span></a></li>
                             @endcan
 
-                            @if (auth()->user()->can('images.index') ||
-                                auth()->user()->can('videos.index') ||
-                                auth()->user()->can('audios.index') ||
-                                auth()->user()->can('documents.index'))
+                            @if (auth()->user()->can('images.index'))
                                 <li class="menu-header">GALERI</li>
                             @endif
 
