@@ -70,7 +70,7 @@
                         <a href="{{ route('dashboard.index') }}">COMPUTER ASSSISTED TEST</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="{{ route('dashboard.index') }}"><img src="{{ asset('assets/img/brimob2.png') }}"
+                        <a><img src="{{ asset('assets/img/brimob2.png') }}"
                                 style="width: 40px" alt=""></a>
                     </div>
                     @hasrole('admin')

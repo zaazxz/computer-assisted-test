@@ -4,11 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Exam;
 use App\Models\User;
-use App\Models\Audio;
 use App\Models\Image;
-use App\Models\Video;
 use Livewire\Component;
-use App\Models\Document;
 use App\Models\Question;
 use Livewire\WithPagination;
 use Illuminate\Contracts\Session\Session;
