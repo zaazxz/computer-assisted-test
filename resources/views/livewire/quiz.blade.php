@@ -14,22 +14,10 @@
     <div class="card-body">
         <b>Soal No. {{ $questions->currentPage() }}</b>
         <p>{{ $question['detail'] }}</p>
-            @if ($question['video_id'])
-                <video width="320" height="240" controls>
-                    <source src="{{ Storage::url('public/videos/'.$video->getLink($question['video_id'])) }}" type="video/mp4">
-                    <source src="{{ Storage::url('public/videos/'.$video->getLink($question['video_id'])) }}" type="video/mpeg">
-                </video>
-            @elseif($question['audio_id'])
-                <audio width="160" height="120" controls>
-                    <source src="{{ Storage::url('public/audios/'.$audio->getLink($question['audio_id'])) }}" type="audio/mp3">
-                    <source src="{{ Storage::url('public/audios/'.$audio->getLink($question['audio_id'])) }}" type="audio/wav">
-                </audio>
-            @elseif($question['document_id'])
-                <a href=" {{ Storage::url('public/documents/'.$document->getLink($question['document_id'])) }}">DOCUMENT</a>
-            @elseif($question['image_id'])
+            @if ($question['image_id'])
             <img src="{{ Storage::url('public/images/'.$image->getLink($question['image_id'])) }}" style="width: 600px">
             @else
-                NO
+                
             @endif
         <br><br>
         <i>Pilih salah satu jawaban dibawah ini:</i> 

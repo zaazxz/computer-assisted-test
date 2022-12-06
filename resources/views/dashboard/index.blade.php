@@ -57,8 +57,11 @@
         @endhasanyrole
         @hasrole('student')
         <div class="section-header">
-          <h1>Anda akan masuk ke-halaman test dalam : 
-          </h1>
+          <div class="timer" onload="timer(1800)">
+            <div class="time">
+              <h3>Anda akan dialihkan ke-halaman test dalam : <span class="badge badge-danger" id="time">Loading...</span></h3>
+            </div>
+          </div>
         </div>
         <h3>Tata tertib peserta</h3>
         <ul>

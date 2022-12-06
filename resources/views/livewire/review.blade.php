@@ -9,9 +9,9 @@
         <b>Soal No. {{ $questions->currentPage() }}</b>
         <p>{{ $question['detail'] }}</p>
             @if ($question['image_id'])
-            <img src="{{ Storage::url('public/images/'.$image->getLink($question['image_id'])) }}" style="width: 150px">
+            <img src="{{ Storage::url('public/images/'.$image->getLink($question['image_id'])) }}" style="width: 600px">
             @else
-                NO
+                
             @endif
         <br>
         <br>
