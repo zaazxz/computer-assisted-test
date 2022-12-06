@@ -62,7 +62,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="{{ route('dashboard.index') }}">COMPUTER ASSSISTED TEST</a>
+                        <a>COMPUTER ASSSISTED TEST</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="{{ route('dashboard.index') }}"><img src="{{ asset('assets/img/brimob2.png') }}"
