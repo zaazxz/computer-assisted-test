@@ -76,13 +76,13 @@
                                                 <i class="fa fa-pencil-alt"></i>
                                             </a>
                                         @endcan
-                                        
+
                                         @hasanyrole('teacher|admin')
                                         <a href="{{ route('exams.student', $exam->id) }}" class="btn btn-sm btn-primary">
                                             <i class="fa fa-door-open"></i>
                                         </a>
                                         @endhasanyrole
-                                        
+
                                         @can('exams.delete')
                                             <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $exam->id }}">
                                                 <i class="fa fa-trash"></i>
@@ -127,9 +127,11 @@
                                     <td>Nama User</td>
                                     <td>{{ $exam->time }}</td>
                                     <td>{{ $exam->questions->count() }}</td>
-                                    <td>80</td>
+                                    <td>{{ $exam->score }}</td>
                                     <td>{{ TanggalID($exam->start) }}</td>
                                     <td>{{ TanggalID($exam->end) }}</td>
+
+                                    {{ $exam->score }}
                                 </tr>
                             @endforeach
                             </tbody>

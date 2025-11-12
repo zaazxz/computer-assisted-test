@@ -23,180 +23,37 @@
     <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 
     @hasrole('student')
-    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/count.js"></script>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/count.js"></script>
     @endhasrole
 
     @livewireStyles
 </head>
 
-<body style="background: #e2e8f0">
+<body
+style="background: #e2e8f0"
+@if (auth()->user()->roles()->first()->name == "student")
+    class="sidebar-mini"
+@endif
+>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-            <nav class="navbar navbar-expand-lg main-navbar">
-                <form class="form-inline mr-auto">
-                    <ul class="navbar-nav mr-3">
-                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
-                    </ul>
-                </form>
-                <ul class="navbar-nav navbar-right">
 
-                    <li class="dropdown"><a href="#" data-toggle="dropdown"
-                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}"
-                                class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">{{ auth()->user()->name }}</div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{ route('logout') }}" style="cursor: pointer"
-                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                class="dropdown-item has-icon text-danger">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <div class="main-sidebar sidebar-style-2">
-                <aside id="sidebar-wrapper">
-                    <div class="sidebar-brand">
-                        <a>COMPUTER ASSSISTED TEST</a>
-                    </div>
-                    <div class="sidebar-brand sidebar-brand-sm">
-                        <a><img src="{{ asset('assets/img/brimob2.png') }}"
-                                style="width: 40px" alt=""></a>
-                    </div>
-                    @hasrole('admin')
-                        <ul class="sidebar-menu">
-                            @if (auth()->user()->can('roles.index') ||
-                                auth()->user()->can('permission.index') ||
-                                auth()->user()->can('users.index'))
-                                <li class="menu-header">PENGATURAN</li>
-                            @endif
+            {{-- Topbar : Start --}}
+            @include('../components/topbar')
+            {{-- Topbar : End --}}
 
-                            @can('sliders.index')
-                                <li class="{{ setActive('admin/slider') }}"><a class="nav-link" href="#"><i
-                                            class="fas fa-laptop"></i>
-                                        <span>Sliders</span></a></li>
-                            @endcan
-
-                            <li
-                                class="dropdown {{ setActive('admin/role') . setActive('admin/permission') . setActive('admin/user') }}">
-                                @if (auth()->user()->can('roles.index') ||
-                                    auth()->user()->can('permission.index') ||
-                                    auth()->user()->can('users.index'))
-                                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Users
-                                            Management</span></a>
-                                @endif
-
-                                <ul class="dropdown-menu">
-                                    @can('roles.index')
-                                        <li class="{{ setActive('admin/role') }}"><a class="nav-link"
-                                                href="{{ route('roles.index') }}"><i class="fas fa-unlock"></i> Roles</a>
-                                        </li>
-                                    @endcan
-
-                                    @can('permissions.index')
-                                        <li class="{{ setActive('/permission') }}"><a class="nav-link"
-                                                href="{{ route('permissions.index') }}"><i class="fas fa-key"></i>
-                                                Permissions</a></li>
-                                    @endcan
-
-                                    @can('users.index')
-                                        <li class="{{ setActive('/user') }}"><a class="nav-link"
-                                                href="{{ route('users.index') }}"><i class="fas fa-users"></i> Users</a>
-                                        </li>
-                                    @endcan
-                                </ul>
-                            </li>
-                            <li class="menu-header">MAIN MENU</li>
-                            <li class="{{ setActive('/dashboard') }}"><a class="nav-link"
-                                    href="{{ route('dashboard.index') }}"><i class="fas fa-tachometer-alt"></i>
-                                    <span>Dashboard</span></a></li>
-                            @can('exams.index')
-                                <li class="{{ setActive('/exam') }}"><a class="nav-link" href="{{ route('exams.index') }}"><i
-                                            class="fas fa-book-open"></i>
-                                        <span>Test</span></a></li>
-                            @endcan
-
-                            @can('questions.index')
-                                <li class="{{ setActive('/question') }}"><a class="nav-link"
-                                        href="{{ route('questions.index') }}"><i class="fas fa-question"></i>
-                                        <span>Questions</span></a>
-                                </li>
-                            @endcan
-
-                            @can('events.index')
-                                <li class="{{ setActive('admin/event') }}"><a class="nav-link" href="#"><i
-                                            class="fas fa-bell"></i>
-                                        <span>Agenda</span></a></li>
-                            @endcan
-
-                            @if (auth()->user()->can('images.index') ||
-                                auth()->user()->can('videos.index') ||
-                                auth()->user()->can('audios.index') ||
-                                auth()->user()->can('documents.index'))
-                                <li class="menu-header">GALERI</li>
-                            @endif
-
-                            @can('images.index')
-                                <li class="{{ setActive('/image') }}"><a class="nav-link"
-                                        href="{{ route('images.index') }}"><i class="fas fa-image"></i>
-                                        <span>Image</span></a></li>
-                            @endcan
-                        </ul>
-                    @endhasrole
-                </aside>
-            </div>
-
-            <!-- Modal -->
-            {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form action="/importimage" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="modal-body">
-                                <div class="">
-                                    <input type="file" class="" id="file" name="file">
-                                    <label class="" for="file">Import Questions</label>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> --}}
+            {{-- Sidebar : Start --}}
+            @include('../components/sidebar')
+            {{-- Sidebar : End --}}
 
             <!-- Main Content -->
             @yield('content')
 
-            <footer class="main-footer">
-                <div class="footer-left">
-                    Copyright &copy; 2022 <div class="bullet"></div> All Rights
-                    Reserved.
-                </div>
-                <div class="footer-right">
+            {{-- Footer : Start --}}
+            @include('../components/footer')
+            {{-- Footer : End --}}
 
-                </div>
-            </footer>
         </div>
     </div>
 

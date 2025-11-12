@@ -17,8 +17,8 @@ class CreateExamUserTable extends Migration
             $table->id();
             $table->foreignId('exam_id');
             $table->foreignId('user_id');
-            $table->longText('history_answer');
-            $table->double('score');
+            $table->longText('history_answer')->nullable();
+            $table->double('score')->default(0);
             $table->timestamps();
         });
     }

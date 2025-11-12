@@ -45,7 +45,7 @@ class ExamController extends Controller
                 $exams = $exams->where('created_by', Auth()->id())->where('name', 'like', '%'. request()->q . '%');
             })->paginate(10);
         }
-        
+
         $user = new User();
 
         return view('exams.index', compact('exams','user'));
@@ -107,7 +107,7 @@ class ExamController extends Controller
     public function edit(exam $exam)
     {
         $questions = $exam->questions()->where('exam_id', $exam->id)->get();
-        
+
         return view('exams.edit', compact('exam', 'questions'));
     }
 
@@ -157,7 +157,7 @@ class ExamController extends Controller
     public function show(exam $exam)
     {
         $questions = $exam->questions()->where('exam_id', $exam->id)->get();
-        
+
         return view('exams.show', compact('exam', 'questions'));
     }
 

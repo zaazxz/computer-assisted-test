@@ -49,6 +49,8 @@ class ImageController extends Controller
             'caption'   => 'required'
         ]);
 
+        // dd($request->all());
+
         //upload image
         $image = $request->file('image');
         $image->storeAs('public/images/', $image->hashName());
@@ -59,10 +61,10 @@ class ImageController extends Controller
             'caption'   => $request->input('caption')
         ]);
 
-        if($image){
+        if ($image) {
             //redirect dengan pesan sukses
             return redirect()->route('images.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else{
             //redirect dengan pesan error
             return redirect()->route('images.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
